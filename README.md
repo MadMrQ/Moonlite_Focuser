@@ -6,7 +6,7 @@ Developed using TallFurryMan's moonduino code base (https://github.com/TallFurry
 
 Dustcap operations removed and backlash set up for always focusing inward with backlash compensated
 
-License -- GPL v3 -- see License for full details
+License -- GPL v3 -- see LICENSE for full details
 
 Uses AccelStepper (http://www.airspayce.com/mikem/arduino/AccelStepper/)
 
