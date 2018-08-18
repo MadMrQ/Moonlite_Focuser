@@ -3,7 +3,7 @@ Moonlite-compatible stepper controller
 Developed using TallFurryMan's moonduino code base (https://github.com/TallFurryMan/moonduino)
 Dustcap operations removed and backlash set up for always focusing inward with backlash compensated
 Does not appear to work with Leonardo
-License -- GPL v3 -- see License.txt for full details
+License -- GPL v3 -- see LICENSE for full details
 
 Uses AccelStepper (http://www.airspayce.com/mikem/arduino/AccelStepper/)
 
