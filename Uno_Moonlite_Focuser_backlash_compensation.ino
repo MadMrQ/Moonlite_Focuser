@@ -3,7 +3,7 @@ Moonlite-compatible stepper controller
 Developed using TallFurryMan's moonduino code base (https://github.com/TallFurryMan/moonduino)
 Dustcap operations removed and backlash set up for always focusing inward with backlash compensated
 Does not appear to work with Leonardo
-License -- GPL v3 -- see LICENSE for full details
+License -- GPL v3 -- see License.txt for full details
 
 Uses AccelStepper (http://www.airspayce.com/mikem/arduino/AccelStepper/)
 
@@ -170,7 +170,7 @@ int                    TempSensor_Valid_Total;
 
 // Backlash to be used on next change of direction - long for eeprom
 long                   Backlash = 0; // [FPTN]
-#define                BACKLASH_FPTN (+24)
+#define                BACKLASH_FPTN (+36)
 
 //#define                DIRUP false
 //#define                DIRDOWN true
@@ -224,7 +224,7 @@ int                    blinkTimer = 0;
 boolean                MoonliteMode = true;
 
 // Backlash Compensation flag
-//boolean                BacklashComp = false;
+boolean                BacklashComp = false;
 
 
 int                    i;
@@ -401,7 +401,7 @@ void loop()
 
         if(TargetPosition > CurrentPosition) 
         {
-         // BacklashComp = true;
+         BacklashComp = true;
           Backlash = BACKLASH_FPTN;
           TempPosition = TargetPosition + Backlash;
           //Serial.print("Target + Backlash :"); Serial.print(TempPosition); Serial.println("");
@@ -706,11 +706,11 @@ void loop()
       lastprint = now;
     }
   }
-  else if ( TempPosition = stepper.currentPosition() )
+  else if ( TempPosition == stepper.currentPosition() && BacklashComp )
     {
       stepper.moveTo(TargetPosition);
-      TempPosition = MaxSteps;
-      // BacklashComp = false;
+      //TempPosition = MaxSteps;
+      BacklashComp = false;
     } 
     // if motor is not moving
   else
